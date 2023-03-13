@@ -45,3 +45,54 @@ class DominosPizza(Pizza):
         description = "Domates Sosu, Mozarella Peyniri, Salam, Mantar"
         cost = 112.0
         super().__init__(name,description, cost)
+
+
+#Pizzaya ekleyeceğimiz itemler, decorator sınıfı ile tanımlı. 
+# Alt sınıflar 'component,description,cost' özelliklerini üst sınıftan alır
+class Decorator(Pizza):
+    def __init__(self,component):
+        self.component = component
+
+    def get_cost(self):
+        return self.component.get_cost() + Pizza.get_cost(self)
+
+    def get_description(self):
+        return self.component.get_description() + ' ' + Pizza.get_description(self)
+    
+
+class Meat(Decorator):
+    def __init__(self, component):
+        description = "Et"
+        cost = 15.0
+        super().__init__(component, description, cost)
+
+class Olive(Decorator):
+    def __init__(self, component):
+        description = "Zeytin"
+        cost = 5.0
+        super().__init__(component, description, cost)
+
+class Mushroom(Decorator):
+    def __init__(self, component):
+        description = "Mantar"
+        cost = 7.0
+        super().__init__(component, description, cost)
+
+class Cheese(Decorator):
+    def __init__(self, component):
+        description = "Keçi Peyniri"
+        cost = 8.0
+        super().__init__(component, description, cost)
+
+class Onion(Decorator):
+    def __init__(self, component):
+        description = "Soğan"
+        cost = 4.0
+        super().__init__(component, description, cost)
+
+class Corn(Decorator):
+    def __init__(self, component):
+        description = "Mısır"
+        cost = 3.0
+        super().__init__(component, description, cost)
+        

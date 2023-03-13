@@ -2,7 +2,7 @@
 1: Klasik
 2: Margarita
 3: TürkPizza
-4: Sade Pizza
+4: Dominos Pizza
 
 * ve seçeceğiniz sos:
 
