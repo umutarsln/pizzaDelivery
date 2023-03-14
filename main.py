@@ -3,10 +3,12 @@ import datetime
 import pizza
 import decorator
 
-myPizza = pizza.DominosPizza()
+Pizza = pizza.Pizza("name","desc",14)
 
-f = open("pizzaDelivery/menu.txt", "r")
 
+f = open("menu.txt", "r")
+
+#Kişisel verileri almaya ve tutarlılığını kontrole yarayan fonksiyon
 def getInfo():
     nameSurname = input("Ad Soyad: ")
 
@@ -20,7 +22,7 @@ def getInfo():
         creditCard = input("Kredi Kart Numarası: ")
         if len(creditCard) == 16:
             break
-        print("Kredi kartı numarası 11 haneli olmalı !!")
+        print("Kredi kartı numarası 16 haneli olmalı !!")
 
     while True:
         cCardPasw = input("Kredi Kart Şifresi: ")
@@ -28,12 +30,27 @@ def getInfo():
             break
         print("Kredi kartı şifresi 4 haneli olmalı !!")
     
+#Pizza ve sos seçimini kontrol eden fonksiyon
+def pizzaInfo():
+    while True:
+        pizzaTab = int(input("Pizza Tabanı(1-4): "))
+        if pizzaTab == 1:
+            myPizza = pizza.ClassicPizza()
+            break
+        print("1'den 4'e kadar seçim yapabilirsiniz !!")
+
+    while True:
+        pizzaSos = int(input("Sos seçiminiz(11-16): "))
+        if pizzaSos == (11 or 12 or 13 or 14 or 15 or 16):
+            break
+        print("11'den 16'ya kadar seçim yapabilirsiniz !!")
+
+    return pizzaTab,pizzaSos
 
 def main():
     print(f.read())
-    pizzaTab = int(input("Pizza Tabanı(1-4): "))
-    pizzaSos = int(input("Sos seçiminiz(11-16): "))
-    getInfo()
-    
+    #print(pizzaInfo())
+    #getInfo()
+
 
 main()
